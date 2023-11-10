@@ -75,7 +75,7 @@ class Hochua(MDApp):
         self.theme_cls.primary_palette = "Pink"
         Builder.load_file('main.kv')
         self.scr = Homescreen()
-        self.scr.current = 'trangchu'
+        # self.scr.current = 'trangchu'
         return self.scr
 
     def callback_for_menu_items(self, *args):
