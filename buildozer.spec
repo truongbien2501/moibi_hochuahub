@@ -1,13 +1,13 @@
 [app]
 
 # (str) Title of your application
-title = DIENBAO
+title = hochua
 
 # (str) Package name
-package.name = DIENBAO
+package.name = hochua
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.DIENBAO
+package.domain = org.hochua
 
 # (str) Source code where the main.py live
 source.dir = .
