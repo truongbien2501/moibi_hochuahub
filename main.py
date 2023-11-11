@@ -30,7 +30,7 @@ from PIL import Image as PILImage
 from ftplib import FTP
 from kivy.core.image import Image as CoreImage
 
-Window.size = (350, 600)
+# Window.size = (350, 600)
 
 class Tab(MDFloatLayout, MDTabsBase):
     '''Class implementing content for a tab.'''
@@ -75,7 +75,7 @@ class Hochua(MDApp):
         self.theme_cls.primary_palette = "Pink"
         Builder.load_file('main.kv')
         self.scr = Homescreen()
-        self.scr.current = 'trangchu'
+        # self.scr.current = 'trangchu'
         return self.scr
 
     def callback_for_menu_items(self, *args):
