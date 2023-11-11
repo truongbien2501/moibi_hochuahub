@@ -5,9 +5,8 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDFillRoundFlatButton
-from kivy_garden.mapview import MapView
-from kivy_garden.mapview import MarkerMapLayer,MapMarkerPopup
-from kivy.uix.scrollview import ScrollView
+from kivy_garden.mapview import MapView,MarkerMapLayer,MapMarkerPopup
+from kivymd.uix.scrollview import MDScrollView
 from kivy.uix.image import Image
 from kivy.core.window import Window
 from kivymd.uix.floatlayout import MDFloatLayout
@@ -30,7 +29,7 @@ from PIL import Image as PILImage
 from ftplib import FTP
 from kivy.core.image import Image as CoreImage
 
-Window.size = (350, 600)
+# Window.size = (350, 600)
 
 class Tab(MDFloatLayout, MDTabsBase):
     '''Class implementing content for a tab.'''
@@ -45,17 +44,20 @@ class Homescreen(ScreenManager):
         else:
             self.show_error_dialog()
     def show_error_dialog(self):
-        dialog = MDDialog(
-            title="Lỗi đăng nhập",
-            text="Sai tên đăng nhập hoặc mật khẩu. Vui lòng thử lại.",
-            buttons=[
-                MDFillRoundFlatButton(
-                    text="Đóng",
-                    on_release=lambda x: dialog.dismiss()
-                )
-            ]
-        )
-        dialog.open()
+        try:
+            dialog = MDDialog(
+                title="Lỗi đăng nhập",
+                text="Sai tên đăng nhập hoặc mật khẩu. Vui lòng thử lại.",
+                buttons=[
+                    MDFillRoundFlatButton(
+                        text="Đóng",
+                        on_release=lambda x: dialog.dismiss()
+                    )
+                ]
+            )
+            dialog.open()
+        except Exception as e:
+            print(f"Đã xảy ra lỗi: {e}")
 
 class RectangularRippleButton(MDBoxLayout, RectangularRippleBehavior, ButtonBehavior, BackgroundColorBehavior):
     pass
@@ -84,10 +86,10 @@ class Hochua(MDApp):
     def show_example_grid_bottom_sheet(self):
         bottom_sheet_menu = MDGridBottomSheet()
         data = {
-            "Facebook": "facebook-box",
+            "Facebook": "facebook",
             "YouTube": "youtube",
-            "Twitter": "twitter-box",
-            "Da Cloud": "cloud-upload",
+            "Twitter": "twitter",
+            "Da Cloud": "cloud",
             "Camera": "camera",
         }
         for item in data.items():
@@ -127,7 +129,7 @@ class Hochua(MDApp):
             
     def update_image_source(self, new_image_path):
         
-        print(new_image_path)
+        # print(new_image_path)
         self.root.ids.image_chart_tvhn.source = new_image_path
         # image = ImageLeftWidget(source = new_image_path)
         # # one_line.add_widget(image)

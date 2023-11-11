@@ -1,13 +1,13 @@
 [app]
 
 # (str) Title of your application
-title = DIENBAO
+title = hochua
 
 # (str) Package name
-package.name = DIENBAO
+package.name = hochua
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.DIENBAO
+package.domain = org.hochua
 
 # (str) Source code where the main.py live
 source.dir = .
@@ -37,7 +37,7 @@ version = 0.404
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,hostpython3,kivy,pandas==1.4.0,pillow,pyftpdlib,Python-IO,kivymd,android,DateTime
+requirements = python3==3.9.10,hostpython3==3.9.10,kivy,kivy_garden.mapview,openssl,pillow,pyftpdlib,Python-IO,kivymd,android,DateTime,numpy
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
