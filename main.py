@@ -31,8 +31,8 @@ from kivy.core.image import Image as CoreImage
 
 # Window.size = (350, 600)
 
-class Tab(MDFloatLayout, MDTabsBase):
-    '''Class implementing content for a tab.'''
+# class Tab(MDFloatLayout, MDTabsBase):
+#     '''Class implementing content for a tab.'''
 
 class Homescreen(ScreenManager):
     def login(self,username, password):
@@ -78,6 +78,7 @@ class Hochua(MDApp):
         Builder.load_file('main.kv')
         self.scr = Homescreen()
         # self.scr.current = 'trangchu'
+        # self.scr.ids.bottom_navigation.switch_tab('chart')
         return self.scr
 
     def callback_for_menu_items(self, *args):
