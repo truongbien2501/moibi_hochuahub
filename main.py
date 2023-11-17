@@ -29,7 +29,7 @@ from PIL import Image as PILImage
 from ftplib import FTP
 from kivy.core.image import Image as CoreImage
 from kivy.clock import Clock
-
+from kivymd.uix.snackbar import Snackbar
 # Window.size = (350, 600)
 
 # class Tab(MDFloatLayout, MDTabsBase):
@@ -43,22 +43,24 @@ class Homescreen(ScreenManager):
             app = MDApp.get_running_app()
             app.root.current = 'trangchu'  # Chuyển đến màn hình chính
         else:
-            try:
-                self.show_error_dialog()
-            except Exception as e:
-                print(f"Lỗi: {e}")
-    def show_error_dialog(self):
-            dialog = MDDialog(
-                title="Lỗi đăng nhập",
-                text="Sai tên đăng nhập hoặc mật khẩu. Vui lòng thử lại.",
-                buttons=[
-                    MDFillRoundFlatButton(
-                        text="Đóng",
-                        on_release=lambda x: dialog.dismiss()
-                    )
-                ]
-            )
-            Clock.schedule_once(lambda dt: dialog.open(), 2.0)
+            # self.show_error_dialog()
+            self.thongbao()
+
+    def thongbao(self):
+        toast("Không đúng mật tên hoặc mật khẩu")
+        
+    # def show_error_dialog(self):
+    #         dialog = MDDialog(
+    #             title="Lỗi đăng nhập",
+    #             text="Sai tên đăng nhập hoặc mật khẩu. Vui lòng thử lại.",
+    #             buttons=[
+    #                 MDFillRoundFlatButton(
+    #                     text="Đóng",
+    #                     on_release=lambda x: dialog.dismiss()
+    #                 )
+    #             ]
+    #         )
+    #         Clock.schedule_once(lambda dt: dialog.open(), 2.0)
 
 class RectangularRippleButton(MDBoxLayout, RectangularRippleBehavior, ButtonBehavior, BackgroundColorBehavior):
     pass
@@ -78,7 +80,7 @@ class Hochua(MDApp):
         self.theme_cls.primary_palette = "Pink"
         Builder.load_file('main.kv')
         self.scr = Homescreen()
-        self.scr.current = 'trangchu'
+        # self.scr.current = 'trangchu'
         # self.scr.ids.bottom_navigation.switch_tab('chart')
         return self.scr
 
@@ -117,6 +119,7 @@ class Hochua(MDApp):
             self.update_image_source("new_image_path_camera.png")
 
     def show_marker_info(self,tram,thongtin):
+        # Snackbar(text="Hello World").open()
             dialog = MDDialog(
                 title=tram,
                 text=thongtin,
