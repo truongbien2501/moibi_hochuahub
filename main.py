@@ -28,6 +28,7 @@ import io
 from PIL import Image as PILImage
 from ftplib import FTP
 from kivy.core.image import Image as CoreImage
+from kivy.clock import Clock
 
 # Window.size = (350, 600)
 
@@ -38,13 +39,15 @@ class Homescreen(ScreenManager):
     def login(self,username, password):
         # print('da click')
         # Thực hiện xác thực đăng nhập ở đây (ví dụ: kiểm tra tên đăng nhập và mật khẩu)
-        if username == 'a' and password == 'a':
+        if username == 'a' and password == 'b':
             app = MDApp.get_running_app()
             app.root.current = 'trangchu'  # Chuyển đến màn hình chính
         else:
-            self.show_error_dialog()
+            try:
+                self.show_error_dialog()
+            except Exception as e:
+                print(f"Lỗi: {e}")
     def show_error_dialog(self):
-        try:
             dialog = MDDialog(
                 title="Lỗi đăng nhập",
                 text="Sai tên đăng nhập hoặc mật khẩu. Vui lòng thử lại.",
@@ -55,9 +58,7 @@ class Homescreen(ScreenManager):
                     )
                 ]
             )
-            dialog.open()
-        except Exception as e:
-            print(f"Đã xảy ra lỗi: {e}")
+            Clock.schedule_once(lambda dt: dialog.open(), 2.0)
 
 class RectangularRippleButton(MDBoxLayout, RectangularRippleBehavior, ButtonBehavior, BackgroundColorBehavior):
     pass
@@ -126,7 +127,7 @@ class Hochua(MDApp):
                 )
                         ]
             )
-            dialog.open()
+            Clock.schedule_once(lambda dt: dialog.open(), 2.0)
             
     def update_image_source(self, new_image_path):
         
