@@ -28,12 +28,13 @@ import io
 from PIL import Image as PILImage
 from ftplib import FTP
 from kivy.core.image import Image as CoreImage
+from kivy.clock import Clock
 from kivymd.uix.snackbar import Snackbar
 from kivymd.uix.label import MDLabel
 # Window.size = (350, 600)
 
-# class Tab(MDFloatLayout, MDTabsBase):
-#     '''Class implementing content for a tab.'''
+class Tab(MDFloatLayout, MDTabsBase):
+    '''Class implementing content for a tab.'''
 
 class Homescreen(ScreenManager):
     def login(self,username, password):
@@ -49,6 +50,18 @@ class Homescreen(ScreenManager):
     def thongbao(self):
         toast("Không đúng tên hoặc mật khẩu")
         
+    # def show_error_dialog(self):
+    #         dialog = MDDialog(
+    #             title="Lỗi đăng nhập",
+    #             text="Sai tên đăng nhập hoặc mật khẩu. Vui lòng thử lại.",
+    #             buttons=[
+    #                 MDFillRoundFlatButton(
+    #                     text="Đóng",
+    #                     on_release=lambda x: dialog.dismiss()
+    #                 )
+    #             ]
+    #         )
+    #         Clock.schedule_once(lambda dt: dialog.open(), 2.0)
 
 class RectangularRippleButton(MDBoxLayout, RectangularRippleBehavior, ButtonBehavior, BackgroundColorBehavior):
     pass
@@ -108,7 +121,17 @@ class Hochua(MDApp):
             self.update_image_source("new_image_path_camera.png")
     
     def show_marker_info(self,tram,thongtin):
-        toast(tram + ':' + thongtin)
+        dialog = MDDialog(
+        title=tram,
+        text=thongtin,
+        buttons=[
+            MDFillRoundFlatButton(
+                text="Đóng",
+                on_release=lambda x: dialog.dismiss()
+                                )
+                                ]
+                                    )
+        dialog.open()
 
             
     def update_image_source(self, new_image_path):
