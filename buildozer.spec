@@ -38,6 +38,7 @@ version = 0.404
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
 requirements = org.gradle.java.home=/path/to/jdk-17
+
 requirements = python3==3.9.10,hostpython3==3.9.10,kiv,kivymd,pillow,kivy_garden.mapview,openssl,requests,charset_normalizer,chardet,idna, urllib3,certifi,pyftpdlib,Python-IO,android,DateTime,numpy
 
 # (str) Custom source folders for requirements
