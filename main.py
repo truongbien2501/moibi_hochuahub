@@ -71,7 +71,6 @@ class RectangularRippleImage(CircularRippleBehavior, ButtonBehavior, Image):
     pass
 
 
-
 class Hochua(MDApp):
     
     def build(self):
@@ -121,17 +120,7 @@ class Hochua(MDApp):
             self.update_image_source("new_image_path_camera.png")
     
     def show_marker_info(self,tram,thongtin):
-        dialog = MDDialog(
-        title=tram,
-        text=thongtin,
-        buttons=[
-            MDFillRoundFlatButton(
-                text="Đóng",
-                on_release=lambda x: dialog.dismiss()
-                                )
-                                ]
-                                    )
-        dialog.open()
+        toast(tram + ':' + thongtin)
 
             
     def update_image_source(self, new_image_path):
@@ -142,8 +131,6 @@ class Hochua(MDApp):
         # # one_line.add_widget(image)
         # self.root.ids.image_widget.add_widget(image)
         
-   
-
     def TTB_API_HC(self):
         now = datetime.now()
         kt = datetime(now.year,now.month,now.day,now.hour)
@@ -162,7 +149,6 @@ class Hochua(MDApp):
         response = requests.get(pth)
         mua = np.array(response.json())
         return mucnuoc,mua
-
     def read_ftp_sever_image(self,tenanh):
         # Thông tin máy chủ FTP và đường dẫn đến file ftp://203.209.181.174/DAKDRINH/Image
         ftp_host = '203.209.181.174'
